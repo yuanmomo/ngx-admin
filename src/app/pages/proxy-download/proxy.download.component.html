@@ -1,5 +1,14 @@
-<div class="row">
-  <nb-card>
-    <nb-card-body>proxy-download</nb-card-body>
-  </nb-card>
+<div class='row'>
+  <div class='col-md-12'>
+    <nb-card class='inline-form-card'>
+      <nb-card-header>提交下载地址到代理服务器:</nb-card-header>
+      <nb-card-body>
+        <form class='form-inline'>
+          <input [(ngModel)]='this.downloadUrl' name='downloadUrl' type='text' nbInput status='primary' fullWidth fieldSize='large' shape='round' placeholder='请输入下载地址.....' />
+          <button nbButton (click)='submitToProxyDownload()'>下载</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>
+

@@ -23,10 +23,24 @@ export class HttpUtilService {
   public corsGet<T>(req): Observable<T> {
     return this.http.get<T>(this.getUrl(req.path),
       {
-        params: req.param,
         headers: req.headers ? req.headers : this.urlHeaders,
         withCredentials: true,
       }).pipe(
+      // retry(3),
+      catchError(this.handleError),
+    );
+  }
+  public corsPost<T>(req): Observable<T> {
+    let usp: HttpParams = new HttpParams();
+    if (req.param) {
+      for (const key of Object.keys(req.param)) {
+        usp = usp.append(key, <string>req.param[key]);
+      }
+    }
+    return this.http.post<T>(this.getUrl(req.path), usp, {
+      headers: req.headers ? req.headers : this.urlHeaders,
+      withCredentials: true,
+    }).pipe(
       // retry(3),
       catchError(this.handleError),
     );

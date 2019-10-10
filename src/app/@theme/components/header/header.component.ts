@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.user = this.userService.getUser('').subscribe((user) => this.user = user);
+    this.userService.getUser('').subscribe((user) => this.user = user);
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
