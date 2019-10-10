@@ -4,8 +4,8 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 export const environment = {
-  production: true,
+  production: false,
   sysName: 'MoMo-Cloud',
   version: '1.0.0',
-  serverUrl: 'https://api.yuanmomo.net',
+  serverUrl: 'http://localhost:8080',
 };

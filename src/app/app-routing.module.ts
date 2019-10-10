@@ -11,7 +11,7 @@ import {
 
 const routes: Routes = [
   {
-    path: 'pages',
+    path: 'backend',
     loadChildren: () => import('app/pages/pages.module')
       .then(m => m.PagesModule),
   },
@@ -45,8 +45,8 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: 'backend', pathMatch: 'full' },
+  { path: '**', redirectTo: 'backend' },
 ];
 
 const config: ExtraOptions = {
