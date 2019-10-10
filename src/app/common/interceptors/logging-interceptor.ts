@@ -26,7 +26,7 @@ export class LoggingInterceptor implements HttpInterceptor {
           const msg = `${req.method} "${req.urlWithParams}"
              ${ok} in ${elapsed} ms.`;
           if (!environment.production) {
-            console.error(msg);
+            console.log(msg);
           }
         }),
       );
