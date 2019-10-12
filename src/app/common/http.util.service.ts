@@ -13,7 +13,7 @@ export class HttpUtilService {
   public urlHeaders = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
   public jsonHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   public serverUrl: string = environment.serverUrl;
-  private urlRegExp = new RegExp('^http(s)?://.*');
+  public urlRegExp = new RegExp('^http(s)?://.*');
 
   constructor(
     public http: HttpClient,
@@ -30,6 +30,7 @@ export class HttpUtilService {
       catchError(this.handleError),
     );
   }
+
   public corsPost<T>(req): Observable<T> {
     let usp: HttpParams = new HttpParams();
     if (req.param) {
@@ -105,5 +106,9 @@ export class HttpUtilService {
 
   public getUrl(path: string): string {
     return this.urlRegExp.test(path) ? path : this.serverUrl + path;
+  }
+
+  public isUrl(url: string): boolean {
+    return this.urlRegExp.test(url);
   }
 }

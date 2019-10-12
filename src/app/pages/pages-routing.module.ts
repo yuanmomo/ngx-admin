@@ -1,9 +1,8 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 
-import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import {ProxyDownloadComponent} from './proxy-download/proxy.download.component';
+import {PagesComponent} from './pages.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,11 +14,12 @@ const routes: Routes = [{
     },
     {
       path: 'proxyDownload',
-      component: ProxyDownloadComponent,
+      loadChildren: () => import('./proxy-download/proxy.download.module')
+        .then(m => m.ProxyDownloadModule),
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'proxyDownload',
       pathMatch: 'full',
     },
   ],

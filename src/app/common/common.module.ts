@@ -1,8 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {HttpUtilService} from './http.util.service';
+import {ToastUtilService} from './toast.util';
 
 const SERVICES = [
   HttpUtilService,
+  ToastUtilService,
 ];
 
 @NgModule({

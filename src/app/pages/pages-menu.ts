@@ -1,17 +1,27 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  {
-    title: 'Dashboard',
-    icon: 'home-outline',
-    link: '/backend/dashboard',
-    home: true,
-  },
+  // {
+  //   title: 'Dashboard',
+  //   icon: 'home-outline',
+  //   link: '/backend/dashboard',
+  //   home: true,
+  // },
   {
     title: 'Proxy-Download',
     icon: 'download-outline',
-    link: '/backend/proxyDownload',
     home: true,
+    expanded : true,
+    children: [
+      {
+        title: '下载',
+        link: '/backend/proxyDownload/download',
+      },
+      {
+        title: '文件列表',
+        link: '/backend/proxyDownload/list',
+      },
+    ],
   },
   // {
   //   title: 'FEATURES',

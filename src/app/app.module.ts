@@ -20,6 +20,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import {ClipboardModule} from 'ngx-clipboard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,8 @@ import {
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+
+    ClipboardModule,
 
     ThemeModule.forRoot(),
 
