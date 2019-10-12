@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpUtilService} from '../../../common/http.util.service';
 import {UrlConfig} from '../../../url-config';
 import {ToastUtilService} from '../../../common/toast.util';
 import {NbGlobalLogicalPosition, NbGlobalPhysicalPosition, NbGlobalPosition} from '@nebular/theme';
+import {LoadUtilService} from '../../../common/load.util';
 
 export interface ProxyDownloadResult {
   code: number;
@@ -10,12 +11,15 @@ export interface ProxyDownloadResult {
   value: string;
 }
 
+declare var thunderLink: any;
+
+
 @Component({
   selector: 'ngx-proxy-download-download',
   templateUrl: './download.component.html',
   styleUrls: ['./download.component.scss'],
 })
-export class DownloadComponent {
+export class DownloadComponent implements OnInit {
   downloadUrl: string;
   fileSaveName: string;
   newDownloadUrl: string;
@@ -25,7 +29,13 @@ export class DownloadComponent {
   disableThunder: boolean = true;
 
   constructor(private httpUtil: HttpUtilService,
-              private toastUtil: ToastUtilService) {
+              private toastUtil: ToastUtilService,
+              private loadUtil: LoadUtilService,
+              ) {
+  }
+
+  ngOnInit() {
+    this.loadUtil.loadScript('//open.thunderurl.com/thunder-link.js');
   }
 
   public submitToProxyDownload() {
@@ -79,9 +89,13 @@ export class DownloadComponent {
   }
 
   openThunder() {
-    window.alert('openThunder');
+    // 创建单个任务
+    thunderLink.newTask({
+      tasks: [{
+        url: this.newDownloadUrl, // 指定下载地址
+      }],
+    });
   }
-
 
   localDownload() {
     window.open(this.newDownloadUrl, '_blank');

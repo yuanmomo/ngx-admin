@@ -7,8 +7,6 @@ import {Result} from './dto';
 import {User} from '../@core/data/users';
 import {
   NbComponentStatus,
-  NbContextMenuComponent,
-  NbGlobalLogicalPosition,
   NbGlobalPosition,
   NbToastrService,
 } from '@nebular/theme';
