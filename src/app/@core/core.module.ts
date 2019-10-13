@@ -1,10 +1,11 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import {
+  getDeepFromObject,
   NbAuthJWTToken,
   NbAuthModule,
   NbAuthSimpleToken,
   NbDummyAuthStrategy,
-  NbPasswordAuthStrategy,
+  NbPasswordAuthStrategy, NbPasswordAuthStrategyOptions,
 } from '@nebular/auth';
 import {NbSecurityModule, NbRoleProvider} from '@nebular/security';
 import {of as observableOf} from 'rxjs';
@@ -23,6 +24,8 @@ import {ImplModule} from './impl/impl.module';
 import {MockUserService} from './mock/mock-users.service';
 import {UserService} from './impl/users.service';
 import {UrlConfig} from '../url-config';
+import {NbPasswordStrategyMessage} from '@nebular/auth/strategies/password/password-strategy-options';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 const socialLinks = [
   // {
@@ -90,24 +93,59 @@ NB_CORE_PROVIDERS.push(
     strategies: [
       NbPasswordAuthStrategy.setup({
         name: 'email',
-        baseEndpoint : '',
+        baseEndpoint: '',
         login: {
           endpoint: UrlConfig.LOGIN_URL,
+          method : 'POST',
           redirect: {
             success: '/backend/',
             failure: null, // stay on the same page
           },
+          requireValidToken: true,
+          // defaultMessages: ['Login Failed'],
         },
         register: {
           endpoint: UrlConfig.REGISTER_URL,
+          method : 'POST',
           redirect: {
-            success: '/backend/',
+            success: '/api/login',
             failure: null, // stay on the same page
           },
         },
         token: {
           class: NbAuthSimpleToken,
           key: 'value', // this parameter tells where to look for the token
+          getter: (module: string, res: HttpResponse<Object>, options: NbPasswordAuthStrategyOptions) => {
+            return getDeepFromObject(
+              res.body,
+              options.token.key,
+            );
+          },
+        },
+        messages: {
+          key: 'message',
+          getter: (module: string, res: HttpResponse<Object>, options: NbPasswordAuthStrategyOptions) => {
+            if (res.body['code'] !== 0) {
+              return res.body['message'];
+            }
+            return getDeepFromObject(
+              res.body,
+              options.messages.key,
+              options[module].defaultMessages,
+            );
+          },
+        },
+        errors: { // http 返回的 code 不能为 200
+          key: 'message',
+          getter: (module: string, res: HttpErrorResponse, options: NbPasswordAuthStrategyOptions) => {
+            // console.info(`error body ${JSON.stringify(res)}`);
+            // console.info(`error msg body ${JSON.stringify(res.error['message'])}`);
+            return getDeepFromObject(
+              res.error,
+              options.errors.key,
+              options[module].defaultErrors,
+            );
+          },
         },
       }),
     ],
