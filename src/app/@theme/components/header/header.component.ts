@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
 
-import { UserData } from '../../../@core/data/users';
+// import { UserData } from '../../../@core/data/users';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import {UserData} from '../../../@core/data/users';
 
 @Component({
   selector: 'ngx-header',
@@ -46,11 +48,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               private userService: UserData,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private authService: NbAuthService,
+              ) {
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
+
+    // this.authService.onTokenChange()
+    //   .subscribe((token: NbAuthJWTToken) => {
+    //     if (token.isValid()) {
+    //       this.user = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable
+    //     }
+    //   });
 
     this.userService.getUser('').subscribe((user) => this.user = user);
 

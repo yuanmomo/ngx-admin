@@ -1,5 +1,5 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
-import {NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy} from '@nebular/auth';
+import {NbAuthJWTToken, NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy} from '@nebular/auth';
 import {NbSecurityModule, NbRoleProvider} from '@nebular/security';
 import {of as observableOf} from 'rxjs';
 
@@ -7,7 +7,7 @@ import {throwIfAlreadyLoaded} from './module-import-guard';
 import {CommonModule} from '../common/common.module';
 import {httpInterceptorProviders} from '../common/interceptors';
 
-import { environment } from '../../environments/environment';
+import {environment} from '../../environments/environment';
 
 import {UserData} from './data/users';
 
@@ -36,12 +36,12 @@ const socialLinks = [
 ];
 
 
-const DATA_SERVICES = [ ];
+const DATA_SERVICES = [];
 if (environment.mockData) {
   DATA_SERVICES.push(
-      {provide: UserData, useClass: MockUserService},
+    {provide: UserData, useClass: MockUserService},
   );
-}else {
+} else {
   DATA_SERVICES.push(
     {provide: UserData, useClass: UserService},
   );
@@ -59,11 +59,21 @@ if (environment.mockData) {
   NB_CORE_PROVIDERS.push(
     ...MockDataModule.forRoot().providers,
   );
-}else {
+} else {
   NB_CORE_PROVIDERS.push(
     ...ImplModule.forRoot().providers,
   );
 }
+
+// const baseFormSetting: any = {
+//   redirectDelay: 500, // delay before redirect after a successful login, while success message is shown to the user
+//   strategy: 'email',  // strategy id key.
+//   showMessages: {     // show/not show success/error messages
+//     success: true,
+//     error: true,
+//   },
+// };
+
 
 NB_CORE_PROVIDERS.push(
   ...CommonModule.forRoot().providers,
@@ -73,14 +83,49 @@ NB_CORE_PROVIDERS.push(
     strategies: [
       NbPasswordAuthStrategy.setup({
         name: 'email',
+        baseEndpoint: '/api/auth/',
+        login: {
+          endpoint: 'login',
+          redirect: {
+            success: '/backend/',
+            failure: null, // stay on the same page
+          },
+        },
+        register: {
+          endpoint: 'register',
+          redirect: {
+            success: '/backend/',
+            failure: null, // stay on the same page
+          },
+        },
+        token: {
+          class: NbAuthJWTToken,
+          key: 'value',
+        },
       }),
     ],
     forms: {
       login: {
-        socialLinks: socialLinks,
+        redirectDelay: 500, // delay before redirect after a successful login, while success message is shown to the user
+        strategy: 'email',  // strategy id key.
+        showMessages: {     // show/not show success/error messages
+          success: true,
+          error: true,
+        },
+        rememberMe: true,   // whether to show or not the `rememberMe` checkbox
       },
       register: {
-        socialLinks: socialLinks,
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        terms: false,
+      },
+      logout: {
+        redirectDelay: 0,
+        strategy: 'email',
       },
     },
   }).providers,
