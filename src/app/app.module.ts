@@ -21,6 +21,7 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import {ClipboardModule} from 'ngx-clipboard';
+import {AuthGuard} from './auth/auth-guard.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,6 +45,10 @@ import {ClipboardModule} from 'ngx-clipboard';
     //   messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     // }),
     CoreModule.forRoot(),
+  ],
+  providers: [
+    // ...
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
 })
