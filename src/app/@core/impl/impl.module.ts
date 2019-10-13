@@ -1,10 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MockUserService } from './mock-users.service';
+import { UserService } from './users.service';
 
 const SERVICES = [
-  MockUserService,
+  UserService,
 ];
 
 @NgModule({
@@ -15,10 +15,10 @@ const SERVICES = [
     ...SERVICES,
   ],
 })
-export class MockDataModule {
+export class ImplModule {
   static forRoot(): ModuleWithProviders {
     return <ModuleWithProviders>{
-      ngModule: MockDataModule,
+      ngModule: ImplModule,
       providers: [
         ...SERVICES,
       ],

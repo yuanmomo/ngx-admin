@@ -1,15 +1,21 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
-import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
-import { of as observableOf } from 'rxjs';
+import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+import {NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy} from '@nebular/auth';
+import {NbSecurityModule, NbRoleProvider} from '@nebular/security';
+import {of as observableOf} from 'rxjs';
 
-import { throwIfAlreadyLoaded } from './module-import-guard';
-import { AnalyticsService } from './utils';
-import { UserData } from './data/users';
-import { UserService } from './mock/users.service';
-// import { MockDataModule } from './mock/mock-data.module';
+import {throwIfAlreadyLoaded} from './module-import-guard';
 import {CommonModule} from '../common/common.module';
 import {httpInterceptorProviders} from '../common/interceptors';
+
+import { environment } from '../../environments/environment';
+
+import {UserData} from './data/users';
+
+import {MockDataModule} from './mock/mock-data.module';
+import {ImplModule} from './impl/impl.module';
+
+import {MockUserService} from './mock/mock-users.service';
+import {UserService} from './impl/users.service';
 
 const socialLinks = [
   // {
@@ -29,9 +35,17 @@ const socialLinks = [
   // },
 ];
 
-const DATA_SERVICES = [
-  { provide: UserData, useClass: UserService },
-];
+
+const DATA_SERVICES = [ ];
+if (environment.mockData) {
+  DATA_SERVICES.push(
+      {provide: UserData, useClass: MockUserService},
+  );
+}else {
+  DATA_SERVICES.push(
+    {provide: UserData, useClass: UserService},
+  );
+}
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
   getRole() {
@@ -40,16 +54,25 @@ export class NbSimpleRoleProvider extends NbRoleProvider {
   }
 }
 
-export const NB_CORE_PROVIDERS = [
-  // ...MockDataModule.forRoot().providers,
+export const NB_CORE_PROVIDERS = [];
+if (environment.mockData) {
+  NB_CORE_PROVIDERS.push(
+    ...MockDataModule.forRoot().providers,
+  );
+}else {
+  NB_CORE_PROVIDERS.push(
+    ...ImplModule.forRoot().providers,
+  );
+}
+
+NB_CORE_PROVIDERS.push(
   ...CommonModule.forRoot().providers,
   ...DATA_SERVICES,
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
+      NbPasswordAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
       }),
     ],
     forms: {
@@ -79,8 +102,7 @@ export const NB_CORE_PROVIDERS = [
   {
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
   },
-  AnalyticsService,
-];
+);
 
 @NgModule({
   imports: [
