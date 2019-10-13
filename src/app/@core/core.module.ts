@@ -1,5 +1,11 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
-import {NbAuthJWTToken, NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy} from '@nebular/auth';
+import {
+  NbAuthJWTToken,
+  NbAuthModule,
+  NbAuthSimpleToken,
+  NbDummyAuthStrategy,
+  NbPasswordAuthStrategy,
+} from '@nebular/auth';
 import {NbSecurityModule, NbRoleProvider} from '@nebular/security';
 import {of as observableOf} from 'rxjs';
 
@@ -16,6 +22,7 @@ import {ImplModule} from './impl/impl.module';
 
 import {MockUserService} from './mock/mock-users.service';
 import {UserService} from './impl/users.service';
+import {UrlConfig} from '../url-config';
 
 const socialLinks = [
   // {
@@ -83,24 +90,24 @@ NB_CORE_PROVIDERS.push(
     strategies: [
       NbPasswordAuthStrategy.setup({
         name: 'email',
-        baseEndpoint: '/api/auth/',
+        baseEndpoint : '',
         login: {
-          endpoint: 'login',
+          endpoint: UrlConfig.LOGIN_URL,
           redirect: {
             success: '/backend/',
             failure: null, // stay on the same page
           },
         },
         register: {
-          endpoint: 'register',
+          endpoint: UrlConfig.REGISTER_URL,
           redirect: {
             success: '/backend/',
             failure: null, // stay on the same page
           },
         },
         token: {
-          class: NbAuthJWTToken,
-          key: 'value',
+          class: NbAuthSimpleToken,
+          key: 'value', // this parameter tells where to look for the token
         },
       }),
     ],

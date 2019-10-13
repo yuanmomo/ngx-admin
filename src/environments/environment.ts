@@ -10,7 +10,8 @@
 
 export const environment = {
   production: false,
-  mockData : true,
+  // mockData : true,
+  mockData : false,
   sysName: 'MoMo-Cloud',
   version: '1.0.0',
   serverUrl: 'http://localhost:8080',

@@ -8,5 +8,5 @@ export const environment = {
   mockData : false,
   sysName: 'MoMo-Cloud',
   version: '1.0.0',
-  serverUrl: 'https://api.yuanmomo.net',
+  serverUrl: 'https://cloud.yuanmomo.net',
 };

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpUtilService} from '../../../common/http.util.service';
 import {UrlConfig} from '../../../url-config';
 import {ToastUtilService} from '../../../common/toast.util';
-import {NbGlobalLogicalPosition, NbGlobalPhysicalPosition, NbGlobalPosition} from '@nebular/theme';
+import {NbGlobalPhysicalPosition } from '@nebular/theme';
 import {LoadUtilService} from '../../../common/load.util';
 
 export interface ProxyDownloadResult {
