@@ -46,18 +46,6 @@ export class MockUserService extends UserData {
     super();
   }
 
-  getUsers(): Observable<any> {
-    return;
-  }
-
-  getContacts(): Observable<Contacts[]> {
-    return observableOf(this.contacts);
-  }
-
-  getRecentUsers(): Observable<RecentUsers[]> {
-    return observableOf(this.recentUsers);
-  }
-
   getUser(token): Observable<User> {
     return observableOf(this.users.lee);
   }

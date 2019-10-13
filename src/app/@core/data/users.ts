@@ -16,7 +16,4 @@ export interface RecentUsers extends Contacts {
 
 export abstract class UserData {
   abstract getUser(token): Observable<User>;
-  abstract getUsers(): Observable<User[]>;
-  abstract getContacts(): Observable<Contacts[]>;
-  abstract getRecentUsers(): Observable<RecentUsers[]>;
 }
