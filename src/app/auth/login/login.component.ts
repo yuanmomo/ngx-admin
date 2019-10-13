@@ -6,5 +6,4 @@ import {NbAuthService, NbLoginComponent} from '@nebular/auth';
   templateUrl: './login.component.html',
 })
 export class NgxLoginComponent extends NbLoginComponent {
-
 }

@@ -12,7 +12,7 @@ export class UrlConfig {
   // public static LOGIN_URL = 'http://www.mocky.io/v2/5da2f39b2f00006700f419f4'; // login success
   // public static LOGIN_URL = environment.serverUrl + '/api/auth/login/v1';
 
-  public static REGISTER_URL = 'http://www.mocky.io/v2/5da18fdc3000007000f8a2a7';
-  // public static REGISTER_URL = environment.serverUrl + '/api/auth/register/v1';
+  // public static REGISTER_URL = 'http://www.mocky.io/v2/5da18fdc3000007000f8a2a7';
+  public static REGISTER_URL = environment.serverUrl + '/api/auth/register/v1';
 
 }

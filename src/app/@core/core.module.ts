@@ -108,7 +108,7 @@ NB_CORE_PROVIDERS.push(
           endpoint: UrlConfig.REGISTER_URL,
           method : 'POST',
           redirect: {
-            success: '/api/login',
+            success: '/backend/',
             failure: null, // stay on the same page
           },
         },
