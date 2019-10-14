@@ -26,6 +26,7 @@ import {UserService} from './impl/users.service';
 import {UrlConfig} from '../url-config';
 import {NbPasswordStrategyMessage} from '@nebular/auth/strategies/password/password-strategy-options';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {FileListService} from './impl/file.list.service';
 
 const socialLinks = [
   // {
@@ -54,6 +55,7 @@ if (environment.mockData) {
 } else {
   DATA_SERVICES.push(
     {provide: UserData, useClass: UserService},
+    {provide: FileList, useClass: FileListService},
   );
 }
 

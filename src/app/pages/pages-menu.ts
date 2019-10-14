@@ -8,17 +8,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   home: true,
   // },
   {
-    title: 'Proxy-Download',
-    icon: 'download-outline',
+    title: '个人信息',
+    icon: 'person-outline',
     home: true,
     expanded : true,
+    children: [
+      {
+        title: '基本信息',
+        link: '/backend/userinfo/profile',
+      },
+    ],
+  },
+  {
+    title: '代理下载',
+    icon: 'download-outline',
+    expanded : false,
+    home: false,
     children: [
       {
         title: '下载',
         link: '/backend/proxyDownload/download',
       },
       {
-        title: '文件列表',
+        title: '已下载文件',
         link: '/backend/proxyDownload/list',
       },
     ],

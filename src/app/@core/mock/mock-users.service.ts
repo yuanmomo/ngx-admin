@@ -1,6 +1,6 @@
 import {of as observableOf, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {Contacts, RecentUsers, User, UserData} from '../data/users';
+import {User, UserData} from '../data/users';
 import {HttpUtilService} from '../../common/http.util.service';
 import {angularClassDecoratorKeys} from 'codelyzer/util/utils';
 import {UrlConfig} from '../../url-config';
@@ -17,11 +17,6 @@ export class MockUserService extends UserData {
     jack: {userName: 'Jack Williams', id : 4, email : 'mail4@gogole.com'},
     lee: {userName: 'Lee Wong', id : 5, email : 'mail5@gogole.com'},
     kate: {userName: 'Kate Martinez' , id : 6, email : 'mail6@gogole.com'},
-  };
-  private types = {
-    mobile: 'mobile',
-    home: 'home',
-    work: 'work',
   };
 
   constructor(private httpUtil: HttpUtilService) {

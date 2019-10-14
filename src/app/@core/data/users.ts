@@ -6,14 +6,6 @@ export interface User {
   email: string;
 }
 
-export interface Contacts {
-  user: User;
-  type: string;
-}
-
-export interface RecentUsers extends Contacts {
-  time: number;
-}
 
 export abstract class UserData {
   abstract getUserInfo(): Observable<User>;

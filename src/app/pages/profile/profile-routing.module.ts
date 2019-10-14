@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {ProfileComponent} from './profile.component';
 import {ListComponent} from './list/list.component';
-import {DownloadComponent} from './download/download.component';
-import {ProxyDownloadComponent} from './proxy.download.component';
 
 const routes: Routes = [{
   path: '',
-  component: ProxyDownloadComponent,
+  component: ProfileComponent,
   children: [
     {
-      path: 'download',
-      component: DownloadComponent,
-    },
-    {
-      path: 'list',
+      path: 'profile',
       component: ListComponent,
     },
   ],
@@ -23,5 +18,5 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ProxyDownloadRoutingModule {
+export class ProfileRoutingModule {
 }

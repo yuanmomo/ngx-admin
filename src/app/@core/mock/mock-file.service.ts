@@ -4,18 +4,25 @@ import {User, UserData} from '../data/users';
 import {HttpUtilService} from '../../common/http.util.service';
 import {angularClassDecoratorKeys} from 'codelyzer/util/utils';
 import {UrlConfig} from '../../url-config';
-import {Result} from '../../common/dto';
-import {map} from 'rxjs/operators';
+import {FileListData} from '../data/file.list';
 
 @Injectable()
-export class UserService extends UserData {
+export class MockFileService extends FileListData {
 
+  private time: Date = new Date;
+
+  private files = [
+    '1.txt',
+    '2.png',
+    '3.dmg',
+  ];
 
   constructor(private httpUtil: HttpUtilService) {
     super();
   }
 
-  getUserInfo(): Observable<User> {
-    return this.httpUtil.doGet({path: UrlConfig.GET_USER_INFO});
+
+  listFiles(): Observable<string[]> {
+    return observableOf(this.files);
   }
 }
