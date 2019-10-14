@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {NbAuthComponent} from '@nebular/auth';
+import {NbAuthComponent, NbLogoutComponent} from '@nebular/auth';
 import {NgxLoginComponent} from './login/login.component';
 import {NgxRegisterComponent} from './register/register.component';
 
@@ -18,6 +18,10 @@ const routes: Routes = [
         component: NgxRegisterComponent, // <---
       },
       {
+        path: 'logout',
+        component: NbLogoutComponent, // <---
+      },
+      {
         path: '',
         redirectTo: 'login',
         pathMatch: 'full',
@@ -25,7 +29,6 @@ const routes: Routes = [
     ],
   },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

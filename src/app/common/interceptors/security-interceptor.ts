@@ -19,10 +19,11 @@ export class SecurityInterceptor implements HttpInterceptor {
           event => {
             responseBody = event instanceof HttpResponse ? event.clone().body : '';
             // console.log(`result :  ${JSON.stringify(event)} ${JSON.stringify(responseBody)}`);
-            if (responseBody !== ''
-              && responseBody['code'] === -99999
-            ) {
-              this.router.navigate(['auth/login']);
+            if (responseBody !== '') {
+              if (responseBody['code'] === -99999) {
+                this.router.navigate(['auth/login']);
+              } else if (responseBody['code'] === 0) {
+              }
             }
           },
         ),

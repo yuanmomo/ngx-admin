@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
-import {NbAuthJWTToken, NbAuthService, NbAuthSimpleToken} from '@nebular/auth';
+import {  } from '@nebular/auth';
 
 // import { UserData } from '../../../@core/data/users';
 import {map, takeUntil} from 'rxjs/operators';
@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [
     // { title: 'Profile' },
-    {title: 'Log out'},
+    {title: 'Log out', link: '/auth/logout'},
   ];
 
   constructor(private sidebarService: NbSidebarService,
@@ -50,20 +50,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private breakpointService: NbMediaBreakpointsService,
-              private authService: NbAuthService,
   ) {
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    // this.authService.onTokenChange()
-    //   .subscribe((token: NbAuthSimpleToken) => {
-    //     if (token.isValid()) {
-    //       this.user = token.getValue(); // here we receive a payload from the token and assigns it to our `user` variable
-    //     }
-    //   });
-    //
     this.userService.getUserInfo().subscribe(
       (user) => {
         this.user = user;

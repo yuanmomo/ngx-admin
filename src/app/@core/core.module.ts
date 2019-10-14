@@ -1,10 +1,10 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import {
   getDeepFromObject,
-  NbAuthJWTToken,
+  // NbAuthJWTToken,
   NbAuthModule,
   NbAuthSimpleToken,
-  NbDummyAuthStrategy,
+  // NbDummyAuthStrategy,
   NbPasswordAuthStrategy, NbPasswordAuthStrategyOptions,
 } from '@nebular/auth';
 import {NbSecurityModule, NbRoleProvider} from '@nebular/security';
@@ -112,6 +112,15 @@ NB_CORE_PROVIDERS.push(
             failure: null, // stay on the same page
           },
         },
+        logout: {
+          alwaysFail: false,
+          endpoint: UrlConfig.LOGOUT_URL,
+          method: 'POST',
+          redirect: {
+            success: '/auth/login',
+            failure: null,
+          },
+        },
         token: {
           class: NbAuthSimpleToken,
           key: 'value', // this parameter tells where to look for the token
@@ -169,7 +178,7 @@ NB_CORE_PROVIDERS.push(
         terms: false,
       },
       logout: {
-        redirectDelay: 0,
+        redirectDelay: 500,
         strategy: 'email',
       },
     },

@@ -4,7 +4,6 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 import {Component, OnInit} from '@angular/core';
-import {NbAuthService, NbTokenService} from '@nebular/auth';
 
 @Component({
   selector: 'ngx-app',
@@ -13,11 +12,9 @@ import {NbAuthService, NbTokenService} from '@nebular/auth';
 export class AppComponent implements OnInit {
 
   constructor(
-    private tokenService: NbTokenService,
   ) {
   }
 
   ngOnInit() {
-    this.tokenService.clear();
   }
 }
