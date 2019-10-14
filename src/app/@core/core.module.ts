@@ -99,7 +99,7 @@ NB_CORE_PROVIDERS.push(
           method : 'POST',
           redirect: {
             success: '/backend/',
-            failure: null, // stay on the same page
+            failure: '/auth/login', // stay on the same page
           },
           requireValidToken: true,
           // defaultMessages: ['Login Failed'],
@@ -109,7 +109,7 @@ NB_CORE_PROVIDERS.push(
           method : 'POST',
           redirect: {
             success: '/backend/',
-            failure: null, // stay on the same page
+            failure: '/auth/login', // stay on the same page
           },
         },
         token: {

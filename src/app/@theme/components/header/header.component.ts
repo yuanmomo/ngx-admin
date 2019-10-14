@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
 import {NbAuthJWTToken, NbAuthService, NbAuthSimpleToken} from '@nebular/auth';
 
 // import { UserData } from '../../../@core/data/users';
-import { map, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 import {UserData} from '../../../@core/data/users';
 import {timeSinceInMicros} from '@angular/compiler-cli/src/ngtsc/perf/src/clock';
 
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: any ;
+  user: any;
 
   themes = [
     {
@@ -42,8 +42,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [
     // { title: 'Profile' },
-    { title: 'Log out' },
-    ];
+    {title: 'Log out'},
+  ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -51,20 +51,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private userService: UserData,
               private breakpointService: NbMediaBreakpointsService,
               private authService: NbAuthService,
-              ) {
+  ) {
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.authService.onTokenChange()
-      .subscribe((token: NbAuthSimpleToken) => {
-        if (token.isValid()) {
-          this.user = token.getValue(); // here we receive a payload from the token and assigns it to our `user` variable
-        }
-      });
+    // this.authService.onTokenChange()
+    //   .subscribe((token: NbAuthSimpleToken) => {
+    //     if (token.isValid()) {
+    //       this.user = token.getValue(); // here we receive a payload from the token and assigns it to our `user` variable
+    //     }
+    //   });
+    //
+    this.userService.getUser('').subscribe((user) => this.user = user);
 
-    const { xl } = this.breakpointService.getBreakpointsMap();
+
+    const {xl} = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
       .pipe(
         map(([, currentBreakpoint]) => currentBreakpoint.width < xl),
@@ -74,7 +77,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.themeService.onThemeChange()
       .pipe(
-        map(({ name }) => name),
+        map(({name}) => name),
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);

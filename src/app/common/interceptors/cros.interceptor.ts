@@ -12,11 +12,14 @@ export class CrosInterceptor implements HttpInterceptor {
 
     // Clone the request and replace the original headers with
     // cloned headers, updated with the authorization.
+
+    // console.log(`origin withCredentials ${req.withCredentials}`);
+
     const authReq = req.clone({
       withCredentials: true,
     });
 
-    console.log(`withCredentials ${authReq.withCredentials}`);
+    // console.log(`clone after withCredentials ${authReq.withCredentials}`);
 
     // send cloned request with header to the next handler.
     return next.handle(authReq);
