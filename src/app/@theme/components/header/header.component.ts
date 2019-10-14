@@ -64,7 +64,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     //     }
     //   });
     //
-    this.userService.getUser('').subscribe((user) => this.user = user);
+    this.userService.getUserInfo().subscribe(
+      (user) => {
+        this.user = user;
+      });
 
 
     const {xl} = this.breakpointService.getBreakpointsMap();

@@ -70,7 +70,7 @@ export class DownloadComponent implements OnInit {
     if (this.downloadUrl) {
       const indexOfStart = this.downloadUrl.lastIndexOf('/');
       let indexOfEnd = this.downloadUrl.indexOf('?', indexOfStart);
-      console.log(indexOfStart, indexOfEnd);
+      // console.log(indexOfStart, indexOfEnd);
       if (indexOfEnd === -1) { // 没有参数
         indexOfEnd = this.downloadUrl.length;
       }

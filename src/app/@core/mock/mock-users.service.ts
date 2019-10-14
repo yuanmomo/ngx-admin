@@ -28,7 +28,7 @@ export class MockUserService extends UserData {
     super();
   }
 
-  getUser(token): Observable<User> {
+  getUserInfo(): Observable<User> {
     return observableOf(this.users.lee);
   }
 }
