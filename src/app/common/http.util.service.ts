@@ -1,13 +1,12 @@
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, finalize, map, tap} from 'rxjs/operators';
 import {Observable, of, throwError} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Result} from './dto';
 import {Router} from '@angular/router';
 import {ToastUtilService} from './toast.util';
-import {NbGlobalPhysicalPosition} from '@nebular/theme';
 
 
 @Injectable()
@@ -16,14 +15,11 @@ export class HttpUtilService {
   public jsonHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   public serverUrl: string = environment.serverUrl;
   public urlRegExp = new RegExp('^http(s)?://.*');
-
   constructor(
     public http: HttpClient,
     private router: Router,
-    private toastUtil: ToastUtilService,
   ) {
   }
-
 
   /**
    * @param {path:string,param:{a:1}},
@@ -52,7 +48,7 @@ export class HttpUtilService {
     }));
   }
 
-  public handleResult(result: any): Observable<any> {
+  private handleResult(result: any): Observable<any> {
     if (result.code === 0) {
       return result.value;
     } else if (result.code === -1) {
@@ -60,7 +56,7 @@ export class HttpUtilService {
       if (console && console.error) {
         console.error(result.message);
       }
-      this.toastUtil.showErrorTopRightToast3s( '错误', result.message);
+      ToastUtilService.showErrorTopRightToast3s('错误', result.message);
     } else if (result.code === -99999) {
       // no login
       if (this.router.url.indexOf('/auth/login') < 0) {
@@ -68,10 +64,10 @@ export class HttpUtilService {
         this.router.navigate(['/auth/login']);
       } else {
         // 正在login 页
-        this.toastUtil.showErrorTopRightToast3s( '错误', '登录页错误：' + result.message);
+        ToastUtilService.showErrorTopRightToast3s('错误', '登录页错误：' + result.message);
       }
     }
-    this.toastUtil.showErrorTopRightToast3s( '错误', '请求出现未知错误');
+    ToastUtilService.showErrorTopRightToast3s('错误', '请求出现未知错误');
   }
 
 
@@ -149,11 +145,13 @@ export class HttpUtilService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
+      console.error(`Backend returned code ${error.status}, ` +
         `body was: ${error.error}`
         + ` msg : ${error.message}`);
+
     }
+
+    ToastUtilService.showErrorTopRightToast3s('错误', '网络错误');
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
   }

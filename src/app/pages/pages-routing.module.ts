@@ -13,6 +13,11 @@ const routes: Routes = [{
     //   component: DashboardComponent,
     // },
     {
+      path: '',
+      redirectTo: 'userinfo',
+      pathMatch: 'full',
+    },
+    {
       path: 'userinfo',
       loadChildren: () => import('./profile/profile.module')
         .then(m => m.ProfileModule),
@@ -21,11 +26,6 @@ const routes: Routes = [{
       path: 'proxyDownload',
       loadChildren: () => import('./proxy-download/proxy.download.module')
         .then(m => m.ProxyDownloadModule),
-    },
-    {
-      path: '',
-      redirectTo: 'profile',
-      pathMatch: 'full',
     },
   ],
 }];

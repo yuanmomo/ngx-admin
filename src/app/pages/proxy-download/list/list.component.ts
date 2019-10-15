@@ -98,7 +98,6 @@ export class ListComponent implements OnInit {
   constructor(
     private fileService: FileListData,
     private httpUtil: HttpUtilService,
-    private toastUtil: ToastUtilService,
   ) {
     this.fileDownloadUrl = environment.fileDowloadUrl;
   }
@@ -122,7 +121,7 @@ export class ListComponent implements OnInit {
         'fileName': event.data['fileName'],
       },
     }).subscribe((msg) => {
-      this.toastUtil.showTopRightToast1s( 'success', '提示', msg);
+      ToastUtilService.showTopRightToast1s( 'success', '提示', msg);
       this.ngOnInit();
     });
   }

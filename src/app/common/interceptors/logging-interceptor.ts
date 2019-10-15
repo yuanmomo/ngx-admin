@@ -2,10 +2,13 @@ import { finalize, tap } from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(
+    private router: Router,
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const started = Date.now();
@@ -28,6 +31,9 @@ export class LoggingInterceptor implements HttpInterceptor {
           if (!environment.production) {
             console.log(msg);
           }
+          // if (ok = 'failed') { // 网络问题，跳转到登陆页面
+          //   this.router.navigate(['/auth/login']);
+          // }
         }),
       );
   }

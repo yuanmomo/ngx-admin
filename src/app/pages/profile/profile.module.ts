@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {ClipboardModule} from 'ngx-clipboard';
 import {ProfileComponent} from './profile.component';
 import {ProfileRoutingModule} from './profile-routing.module';
-import {ListComponent} from './list/list.component';
+import {UserInfoComponent} from './userinfo/user.info.component';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import {ListComponent} from './list/list.component';
   ],
   declarations: [
     ProfileComponent,
-    ListComponent,
+    UserInfoComponent,
   ],
 })
 export class ProfileModule { }

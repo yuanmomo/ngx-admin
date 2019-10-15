@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProfileComponent} from './profile.component';
-import {ListComponent} from './list/list.component';
+import {UserInfoComponent} from './userinfo/user.info.component';
 
 const routes: Routes = [{
   path: '',
@@ -9,7 +9,12 @@ const routes: Routes = [{
   children: [
     {
       path: 'profile',
-      component: ListComponent,
+      component: UserInfoComponent,
+    },
+    {
+      path: '',
+      redirectTo: 'profile',
+      pathMatch: 'full',
     },
   ],
 }];

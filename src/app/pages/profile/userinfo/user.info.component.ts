@@ -7,18 +7,18 @@ import {ToastUtilService} from '../../../common/toast.util';
 
 @Component({
   selector: 'ngx-list',
-  templateUrl: 'list.component.html',
-  styleUrls: ['list.component.scss'],
+  templateUrl: 'user.info.component.html',
+  styleUrls: ['user.info.component.scss'],
 })
-export class ListComponent implements OnInit{
-  private user = new UserDetail() ;
+export class UserInfoComponent implements OnInit {
+  private user = new UserDetail();
 
   constructor(
     private userService: UserService,
     private httpUtil: HttpUtilService,
-    private toastUtil: ToastUtilService,
   ) {
   }
+
   updateUserInfo() {
     const deleteUrl = `${UrlConfig.UPDATE_USER_INFO_URL}`;
     this.httpUtil.doPost({
@@ -27,7 +27,7 @@ export class ListComponent implements OnInit{
         'userName': this.user.userName,
       },
     }).subscribe((msg) => {
-      this.toastUtil.showTopRightToast1s('success', '提示', msg);
+      ToastUtilService.showTopRightToast1s('success', '提示', msg);
       this.ngOnInit();
     });
   }

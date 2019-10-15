@@ -29,7 +29,6 @@ export class DownloadComponent implements OnInit {
   disableThunder: boolean = true;
 
   constructor(private httpUtil: HttpUtilService,
-              private toastUtil: ToastUtilService,
               private loadUtil: LoadUtilService,
               ) {
   }
@@ -41,7 +40,7 @@ export class DownloadComponent implements OnInit {
   public submitToProxyDownload() {
     // check downloadUrl
     if (!this.httpUtil.isUrl(this.downloadUrl)) {
-      this.toastUtil.showErrorTopRightToast3s('提示', '请输入下载地址！！');
+      ToastUtilService.showErrorTopRightToast3s('提示', '请输入下载地址！！');
       return;
     }
 
@@ -59,7 +58,7 @@ export class DownloadComponent implements OnInit {
         this.newDownloadUrl = result.value;
         this.updateButtons();
       }else {
-        this.toastUtil.showErrorTopRightToast3s( '错误', result.message);
+        ToastUtilService.showErrorTopRightToast3s( '错误', result.message);
       }
       this.disableSubmit = false;
     });
