@@ -2,10 +2,7 @@ import {of as observableOf, Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {User, UserData} from '../data/users';
 import {HttpUtilService} from '../../common/http.util.service';
-import {angularClassDecoratorKeys} from 'codelyzer/util/utils';
 import {UrlConfig} from '../../url-config';
-import {Result} from '../../common/dto';
-import {map} from 'rxjs/operators';
 
 @Injectable()
 export class UserService extends UserData {

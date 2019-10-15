@@ -38,7 +38,7 @@ export class HttpUtilService {
    * @param {path:string,param:{a:1}},
    */
   public doPost(p): Observable<any> {
-    return this.doPost(p).pipe(map((result: Result<any>) => {
+    return this.post(p).pipe(map((result: Result<any>) => {
       return this.handleResult(result);
     }));
   }
@@ -47,7 +47,7 @@ export class HttpUtilService {
    * @param {path:string,param:{a:1}},
    */
   public doPostJson(p): Observable<any> {
-    return this.doPostJson(p).pipe(map((result: Result<any>) => {
+    return this.postJson(p).pipe(map((result: Result<any>) => {
       return this.handleResult(result);
     }));
   }
@@ -60,7 +60,7 @@ export class HttpUtilService {
       if (console && console.error) {
         console.error(result.message);
       }
-      this.toastUtil.showErrorToast1s(NbGlobalPhysicalPosition.TOP_RIGHT, '错误', result.message);
+      this.toastUtil.showErrorTopRightToast3s( '错误', result.message);
     } else if (result.code === -99999) {
       // no login
       if (this.router.url.indexOf('/auth/login') < 0) {
@@ -68,10 +68,10 @@ export class HttpUtilService {
         this.router.navigate(['/auth/login']);
       } else {
         // 正在login 页
-        this.toastUtil.showErrorToast1s(NbGlobalPhysicalPosition.TOP_RIGHT, '错误', '登录页错误：' + result.message);
+        this.toastUtil.showErrorTopRightToast3s( '错误', '登录页错误：' + result.message);
       }
     }
-    this.toastUtil.showErrorToast1s(NbGlobalPhysicalPosition.TOP_RIGHT, '错误', '请求出现未知错误');
+    this.toastUtil.showErrorTopRightToast3s( '错误', '请求出现未知错误');
   }
 
 

@@ -5,6 +5,7 @@ export interface FileItem {
   fileName: string;
   size: string;
   lastModifyTime: string;
+  button: string;
 }
 
 export abstract class FileListData {

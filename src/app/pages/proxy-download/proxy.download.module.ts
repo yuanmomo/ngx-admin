@@ -12,9 +12,10 @@ import {DownloadComponent} from './download/download.component';
 import {FormsModule} from '@angular/forms';
 import {ClipboardModule} from 'ngx-clipboard';
 import {ProxyDownloadRoutingModule} from './proxy.download-routing.module';
-import {ListComponent} from './list/list.component';
+import { ListComponent} from './list/list.component';
 import {ProxyDownloadComponent} from './proxy.download.component';
 import {Ng2SmartTableModule} from 'ng2-smart-table';
+import {ButtonViewComponent} from './list/button.view.component';
 
 @NgModule({
   imports: [
@@ -30,10 +31,15 @@ import {Ng2SmartTableModule} from 'ng2-smart-table';
     Ng2SmartTableModule,
     ProxyDownloadRoutingModule,
   ],
+  entryComponents: [
+    ButtonViewComponent,
+  ],
+
   declarations: [
     ProxyDownloadComponent,
     DownloadComponent,
     ListComponent,
+    ButtonViewComponent,
   ],
 })
 export class ProxyDownloadModule { }

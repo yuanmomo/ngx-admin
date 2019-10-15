@@ -9,6 +9,8 @@ export class UrlConfig {
 
   public static FILE_LIST_URL = environment.serverUrl + '/api/file/list/v1';
 
+  public static DELETE_FILE_URL = environment.serverUrl + '/api/file/delete/v1';
+
   // public static LOGIN_URL = 'http://www.mocky.io/v2/5da32a492f00002a008a0711'; // login failed
   // public static LOGIN_URL = 'http://www.mocky.io/v2/5da2f39b2f00006700f419f4'; // login success
   public static LOGIN_URL = environment.serverUrl + '/api/auth/login/v1';

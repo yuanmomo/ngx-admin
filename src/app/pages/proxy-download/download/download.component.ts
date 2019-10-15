@@ -41,19 +41,16 @@ export class DownloadComponent implements OnInit {
   public submitToProxyDownload() {
     // check downloadUrl
     if (!this.httpUtil.isUrl(this.downloadUrl)) {
-      this.toastUtil.showErrorToast1s(NbGlobalPhysicalPosition.TOP_RIGHT,  '提示', '请输入下载地址！！');
+      this.toastUtil.showErrorTopRightToast3s('提示', '请输入下载地址！！');
       return;
     }
 
     // disabled the submit button
     this.disableSubmit = true;
-    // TODO 修改 请求方式
     this.httpUtil.corsPost<ProxyDownloadResult>(
       {
         path: UrlConfig.PROXY_DOWNLOAD_URL,
         param: {
-          'token': 'Re8VhmYP8JSU74msPjkRpVGAavGC',
-          'userName': 'yuanmomo',
           'url': this.downloadUrl,
           'saveName': this.fileSaveName,
         },
@@ -61,6 +58,8 @@ export class DownloadComponent implements OnInit {
       if (result.code === 0 && this.httpUtil.isUrl(result.value)) { // 返回 成功
         this.newDownloadUrl = result.value;
         this.updateButtons();
+      }else {
+        this.toastUtil.showErrorTopRightToast3s( '错误', result.message);
       }
       this.disableSubmit = false;
     });

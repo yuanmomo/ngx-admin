@@ -17,7 +17,7 @@ export class ListComponent {
 
   ngOnInit = () => {
     this.fileService.listFiles().subscribe((fileList) => {
-      console.info(`${JSON.stringify(fileList)}`);
+      // console.info(`${JSON.stringify(fileList)}`);
     });
   }
 }

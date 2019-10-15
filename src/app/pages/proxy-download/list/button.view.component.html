@@ -1,0 +1,9 @@
+<span class="table-button">
+  <button nbButton ngxClipboard [cbContent]="downloadUrl" status='info'>{{ copy }}</button>
+</span>
+<span class="table-button">
+  <button nbButton (click)='directDownload()' status='primary'>{{ direct }}</button>
+</span>
+<span class="table-button">
+  <button nbButton (click)='thunderDownload()' status='success'>{{ thunder }}</button>
+</span>
