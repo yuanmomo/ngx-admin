@@ -20,10 +20,11 @@ export class UserInfoComponent implements OnInit {
   }
 
   updateUserInfo() {
-    const deleteUrl = `${UrlConfig.UPDATE_USER_INFO_URL}`;
+    const updateUserInfo = `${UrlConfig.UPDATE_USER_INFO_URL}`;
     this.httpUtil.doPost({
-      path: deleteUrl,
+      path: updateUserInfo,
       param: {
+        'id': this.user.id,
         'userName': this.user.userName,
       },
     }).subscribe((msg) => {

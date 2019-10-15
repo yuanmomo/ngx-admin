@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
-import {MENU_ITEMS} from './pages-menu';
+import {MENU_ITEMS_ADMIN, MENU_ITEMS_USER} from './pages-menu';
 import {ToastUtilService} from '../common/toast.util';
+import {UserData} from '../@core/data/users';
 
 @Component({
   selector: 'ngx-pages',
@@ -13,13 +14,24 @@ import {ToastUtilService} from '../common/toast.util';
       </ngx-one-column-layout>
   `,
 })
-export class PagesComponent {
-
-  menu = MENU_ITEMS;
+export class PagesComponent implements OnInit {
+  menu = [];
 
   constructor(
     private toastUtil: ToastUtilService,
+    private userService: UserData,
   ) {
 
+  }
+
+  ngOnInit(): void {
+    this.userService.getUserDetail().subscribe(
+      (user) => {
+        if (user.isAdmin === '是') {
+          this.menu = MENU_ITEMS_ADMIN;
+        } else {
+          this.menu = MENU_ITEMS_USER;
+        }
+      });
   }
 }

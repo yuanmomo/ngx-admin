@@ -104,12 +104,14 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.fileService.listFiles().subscribe((fileList) => {
-      fileList.forEach((file, index, array) => {
-        file.button = '复制地址|直接下载|迅雷下载';
-      });
+      if (fileList !== null) {
+        fileList.forEach((file, index, array) => {
+          file.button = '复制地址|直接下载|迅雷下载';
+        });
 
-      this.fileList = fileList;
-      this.source.load(fileList);
+        this.fileList = fileList;
+        this.source.load(fileList);
+      }
     });
   }
 

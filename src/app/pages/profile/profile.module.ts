@@ -7,6 +7,8 @@ import {ClipboardModule} from 'ngx-clipboard';
 import {ProfileComponent} from './profile.component';
 import {ProfileRoutingModule} from './profile-routing.module';
 import {UserInfoComponent} from './userinfo/user.info.component';
+import {UserListComponent} from './userlist/user.list.component';
+import {Ng2SmartTableModule} from 'ng2-smart-table';
 
 @NgModule({
   imports: [
@@ -19,11 +21,13 @@ import {UserInfoComponent} from './userinfo/user.info.component';
     FormsModule,
     ClipboardModule,
     NbUserModule,
+    Ng2SmartTableModule,
     ProfileRoutingModule,
   ],
   declarations: [
     ProfileComponent,
     UserInfoComponent,
+    UserListComponent,
   ],
 })
 export class ProfileModule { }

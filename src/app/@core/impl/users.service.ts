@@ -13,6 +13,10 @@ export class UserService extends UserData {
   }
 
   getUserDetail(): Observable<UserDetail> {
-    return this.httpUtil.doGet({path: UrlConfig.GET_USER_INFO});
+    return this.httpUtil.doGet({path: UrlConfig.GET_USER_INFO_URL});
+  }
+
+  selectUserList(): Observable<UserDetail[]> {
+    return this.httpUtil.doGet({path: UrlConfig.SELECT_USER_LIST_INFO_URL});
   }
 }

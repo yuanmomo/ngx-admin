@@ -8,9 +8,11 @@ export class UserDetail {
   uploadToken: string;
   createTime: string;
   lastLoginTime: string;
+  isAdmin: string;
 }
 
 
 export abstract class UserData {
   abstract getUserDetail(): Observable<UserDetail>;
+  abstract selectUserList(): Observable<UserDetail[]>;
 }

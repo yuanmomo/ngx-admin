@@ -19,7 +19,9 @@ export class UrlConfig {
   public static REGISTER_URL = environment.serverUrl + '/api/auth/register/v1';
 
   // public static GET_USER_INFO = 'http://www.mocky.io/v2/5da2f19b2f0000cc6df419f2';
-  public static GET_USER_INFO = environment.serverUrl + '/api/auth/info/v1';
+  public static GET_USER_INFO_URL = environment.serverUrl + '/api/auth/info/v1';
+  public static SELECT_USER_LIST_INFO_URL = environment.serverUrl + '/api/auth/list/v1';
+  public static DELETE_USER_URL = environment.serverUrl + '/api/auth/delete/v1';
 
   public static LOGOUT_URL = environment.serverUrl + '/api/auth/logout/v1';
 

@@ -57,6 +57,7 @@ export class HttpUtilService {
         console.error(result.message);
       }
       ToastUtilService.showErrorTopRightToast3s('错误', result.message);
+      return result.value;
     } else if (result.code === -99999) {
       // no login
       if (this.router.url.indexOf('/auth/login') < 0) {

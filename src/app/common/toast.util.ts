@@ -31,6 +31,9 @@ export class ToastUtilService {
   }
 
   public static showToast(position: NbGlobalPosition, type: NbComponentStatus, title: string, body: string, duration: number) {
+    if (body === '') {
+      return;
+    }
     const config = {
       status: type,
       duration: duration,
