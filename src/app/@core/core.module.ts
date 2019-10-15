@@ -24,9 +24,10 @@ import {ImplModule} from './impl/impl.module';
 import {MockUserService} from './mock/mock-users.service';
 import {UserService} from './impl/users.service';
 import {UrlConfig} from '../url-config';
-import {NbPasswordStrategyMessage} from '@nebular/auth/strategies/password/password-strategy-options';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {FileListService} from './impl/file.list.service';
+import {FileListData} from './data/file.list';
+import {MockFileService} from './mock/mock-file.service';
 
 const socialLinks = [
   // {
@@ -51,11 +52,12 @@ const DATA_SERVICES = [];
 if (environment.mockData) {
   DATA_SERVICES.push(
     {provide: UserData, useClass: MockUserService},
+    {provide: FileListData, useClass: MockFileService},
   );
 } else {
   DATA_SERVICES.push(
     {provide: UserData, useClass: UserService},
-    {provide: FileList, useClass: FileListService},
+    {provide: FileListData, useClass: FileListService},
   );
 }
 

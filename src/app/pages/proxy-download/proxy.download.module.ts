@@ -3,9 +3,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbInputModule,
-  NbListComponent,
   NbListModule,
-  NbTreeGridModule,
   NbUserModule,
 } from '@nebular/theme';
 
@@ -16,6 +14,7 @@ import {ClipboardModule} from 'ngx-clipboard';
 import {ProxyDownloadRoutingModule} from './proxy.download-routing.module';
 import {ListComponent} from './list/list.component';
 import {ProxyDownloadComponent} from './proxy.download.component';
+import {Ng2SmartTableModule} from 'ng2-smart-table';
 
 @NgModule({
   imports: [
@@ -28,7 +27,7 @@ import {ProxyDownloadComponent} from './proxy.download.component';
     FormsModule,
     ClipboardModule,
     NbUserModule,
-    NbTreeGridModule,
+    Ng2SmartTableModule,
     ProxyDownloadRoutingModule,
   ],
   declarations: [

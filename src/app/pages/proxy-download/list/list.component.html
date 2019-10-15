@@ -1,28 +1,10 @@
 <nb-card>
+  <nb-card-header>
+    Smart Table
+  </nb-card-header>
+
   <nb-card-body>
-
-    <table [nbTreeGrid]="data" equalColumnsWidth>
-
-      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
-
-      <ng-container [nbTreeGridColumnDef]="customColumn">
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-
-          <nb-tree-grid-row-toggle
-            [expanded]="row.expanded"
-            *ngIf="row.data.kind === 'dir'">
-          </nb-tree-grid-row-toggle>
-
-          {{row.data.name}}
-
-        </td>
-      </ng-container>
-
-      <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
-      </ng-container>
-
-    </table>
-
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
   </nb-card-body>
 </nb-card>
