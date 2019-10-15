@@ -1,6 +1,6 @@
 import {of as observableOf, Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {User, UserData} from '../data/users';
+import {UserData, UserDetail} from '../data/users';
 import {HttpUtilService} from '../../common/http.util.service';
 import {UrlConfig} from '../../url-config';
 
@@ -12,7 +12,7 @@ export class UserService extends UserData {
     super();
   }
 
-  getUserInfo(): Observable<User> {
+  getUserDetail(): Observable<UserDetail> {
     return this.httpUtil.doGet({path: UrlConfig.GET_USER_INFO});
   }
 }

@@ -1,23 +1,41 @@
-import {Component} from '@angular/core';
-import {FileListService} from '../../../@core/impl/file.list.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../../../@core/impl/users.service';
+import {UserDetail} from '../../../@core/data/users';
+import {UrlConfig} from '../../../url-config';
+import {HttpUtilService} from '../../../common/http.util.service';
+import {ToastUtilService} from '../../../common/toast.util';
 
 @Component({
   selector: 'ngx-list',
   templateUrl: 'list.component.html',
   styleUrls: ['list.component.scss'],
 })
-export class ListComponent {
-  private fileList: any;
+export class ListComponent implements OnInit{
+  private user = new UserDetail() ;
 
   constructor(
-    private fileService: FileListService,
+    private userService: UserService,
+    private httpUtil: HttpUtilService,
+    private toastUtil: ToastUtilService,
   ) {
   }
-
-
-  ngOnInit = () => {
-    this.fileService.listFiles().subscribe((fileList) => {
-      // console.info(`${JSON.stringify(fileList)}`);
+  updateUserInfo() {
+    const deleteUrl = `${UrlConfig.UPDATE_USER_INFO_URL}`;
+    this.httpUtil.doPost({
+      path: deleteUrl,
+      param: {
+        'userName': this.user.userName,
+      },
+    }).subscribe((msg) => {
+      this.toastUtil.showTopRightToast1s('success', '提示', msg);
+      this.ngOnInit();
     });
+  }
+
+  ngOnInit(): void {
+    this.userService.getUserDetail().subscribe(
+      (user) => {
+        this.user = user;
+      });
   }
 }

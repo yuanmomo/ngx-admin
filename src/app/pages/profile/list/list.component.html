@@ -1,1 +1,57 @@
-hello user info profile
+<div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>个人信息:</nb-card-header>
+      <nb-card-body>
+        <form class='form-inline-userInfo'>
+          <div class='form-group row col-sm-12' >
+            <label for='email' class='label col-sm-3 col-form-label'>邮箱:</label>
+            <div class='col-sm-9'>
+              <input [(ngModel)]='user.email' id='email' name='email'
+                     type='text' nbInput status='primary' disabled fullWidth fieldSize='medium' placeholder='Email...' >
+            </div>
+          </div>
+
+          <div class='form-group row col-sm-12' >
+            <label for='userName' class='label col-sm-3 col-form-label'>用户名:</label>
+            <div class='col-sm-7'>
+              <input [(ngModel)]='user.userName' id='userName' name='userName'
+                     type='text' nbInput status='primary' fullWidth fieldSize='medium' placeholder='User Name...' >
+            </div>
+            <div class='col-sm-2'>
+              <button nbButton (click)="updateUserInfo()"  status='primary'>修改</button>
+            </div>
+          </div>
+
+          <div class='form-group row col-sm-12' >
+            <label for='uploadToken' class='label col-sm-3 col-form-label'>图片上传 Token:</label>
+            <div class='col-sm-7'>
+              <input [(ngModel)]='user.uploadToken' readonly #uploadToken id='uploadToken' name='uploadToken'
+                     type='text' nbInput status='primary' fullWidth fieldSize='medium' placeholder='Upload Token...' >
+            </div>
+            <div class='col-sm-2'>
+              <button nbButton [ngxClipboard]="uploadToken" status='primary'>复制</button>
+            </div>
+          </div>
+
+          <div class='form-group row col-sm-12' >
+            <label for='createTime' class='label col-sm-3 col-form-label'>创建日期:</label>
+            <div class='col-sm-9'>
+              <input [(ngModel)]='user.createTime' disabled id='createTime' name='createTime'
+                     type='text' nbInput status='primary' fullWidth fieldSize='medium' placeholder='Create Time...' >
+            </div>
+          </div>
+
+          <div class='form-group row col-sm-12' >
+            <label for='lastLoginTime' class='label col-sm-3 col-form-label'>最后一次登陆:</label>
+            <div class='col-sm-9'>
+              <input [(ngModel)]='user.lastLoginTime' disabled id='lastLoginTime' name='lastLoginTime'
+                     type='text' nbInput status='primary' fullWidth fieldSize='medium' placeholder='Last Login Time...' >
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>

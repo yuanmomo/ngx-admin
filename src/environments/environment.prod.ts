@@ -5,7 +5,7 @@
  */
 export const environment = {
   production: true,
-  mockData : false,
+  mockData: false,
   sysName: 'MoMo-Cloud',
   version: '1.0.0',
   serverUrl: 'https://cloud.yuanmomo.net',

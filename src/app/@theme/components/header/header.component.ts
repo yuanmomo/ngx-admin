@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.userService.getUserInfo().subscribe(
+    this.userService.getUserDetail().subscribe(
       (user) => {
         this.user = user;
       });

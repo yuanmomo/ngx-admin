@@ -1,12 +1,16 @@
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
-export interface User {
+
+export class UserDetail {
   id: number;
   userName: string;
   email: string;
+  uploadToken: string;
+  createTime: string;
+  lastLoginTime: string;
 }
 
 
 export abstract class UserData {
-  abstract getUserInfo(): Observable<User>;
+  abstract getUserDetail(): Observable<UserDetail>;
 }

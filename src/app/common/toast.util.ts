@@ -1,10 +1,4 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
-import {catchError} from 'rxjs/operators';
-import {Observable, throwError} from 'rxjs';
-import {HttpErrorResponse} from '@angular/common/http';
-import {Result} from './dto';
-import {User} from '../@core/data/users';
 import {
   NbComponentStatus, NbGlobalPhysicalPosition,
   NbGlobalPosition,
