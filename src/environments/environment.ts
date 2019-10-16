@@ -15,5 +15,5 @@ export const environment = {
   sysName: 'MoMo-Cloud',
   version: '1.0.0',
   serverUrl: 'http://localhost:8080',
-  fileDowloadUrl: 'http://localhost:8080',
+  fileDownloadUrl: 'http://localhost:8080',
 };

@@ -34,7 +34,7 @@ export class ButtonViewComponent implements ViewCell, OnInit {
       this.thunder = textArray[2];
     }
     this.loadUtil.loadScript('//open.thunderurl.com/thunder-link.js');
-    this.downloadUrl = `${environment.fileDowloadUrl}/${this.rowData['fileName']}`;
+    this.downloadUrl = `${environment.fileDownloadUrl}/${this.rowData['fileName']}`;
   }
 
   thunderDownload() {

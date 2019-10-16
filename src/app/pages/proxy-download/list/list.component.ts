@@ -99,7 +99,7 @@ export class ListComponent implements OnInit {
     private fileService: FileListData,
     private httpUtil: HttpUtilService,
   ) {
-    this.fileDownloadUrl = environment.fileDowloadUrl;
+    this.fileDownloadUrl = environment.fileDownloadUrl;
   }
 
   ngOnInit() {

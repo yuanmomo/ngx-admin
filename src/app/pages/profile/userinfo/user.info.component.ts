@@ -11,7 +11,7 @@ import {ToastUtilService} from '../../../common/toast.util';
   styleUrls: ['user.info.component.scss'],
 })
 export class UserInfoComponent implements OnInit {
-  private user = new UserDetail();
+  public user = new UserDetail();
 
   constructor(
     private userService: UserService,
