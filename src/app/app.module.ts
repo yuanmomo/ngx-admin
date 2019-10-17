@@ -2,6 +2,19 @@
  * @license
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Disable the terser plugin by editing the file:
+
+ node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/common.js
+
+ and comment out:
+
+ extraMinimizers.push(new TerserPlugin({
+  sourceMap: scriptsSourceMap,
+  parallel: true,
+  cache: true,
+  terserOptions,
+}));
+ rebuild the app with ng build frontend --prod and you should be able to see in the console which service can't be injected.
  */
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
