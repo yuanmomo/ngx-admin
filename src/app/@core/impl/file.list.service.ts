@@ -1,4 +1,4 @@
-import {of as observableOf, Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpUtilService} from '../../common/http.util.service';
 import {UrlConfig} from '../../url-config';

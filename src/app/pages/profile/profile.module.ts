@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {NbButtonModule, NbCardModule, NbInputModule, NbListComponent, NbListModule, NbUserModule} from '@nebular/theme';
+import {NbButtonModule, NbCardModule, NbInputModule,  NbListModule, NbUserModule} from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import {FormsModule} from '@angular/forms';

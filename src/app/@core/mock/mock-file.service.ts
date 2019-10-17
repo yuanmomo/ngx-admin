@@ -1,12 +1,9 @@
-import {of as observableOf, Observable, of} from 'rxjs';
+import {of as observableOf, Observable } from 'rxjs';
 import {Injectable} from '@angular/core';
 import {FileItem, FileListData} from '../data/file.list';
-import {ObserveOnMessage} from 'rxjs/internal/operators/observeOn';
 
 @Injectable()
 export class MockFileService extends FileListData {
-
-  private time: Date = new Date;
 
   private files: FileItem[] = [{
     id: 1,

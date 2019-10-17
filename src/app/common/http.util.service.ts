@@ -1,8 +1,8 @@
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
-import {catchError, finalize, map, tap} from 'rxjs/operators';
-import {Observable, of, throwError} from 'rxjs';
+import {catchError, map } from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Result} from './dto';
 import {Router} from '@angular/router';

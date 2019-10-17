@@ -6,7 +6,6 @@ import {  } from '@nebular/auth';
 import {map, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {UserData} from '../../../@core/data/users';
-import {timeSinceInMicros} from '@angular/compiler-cli/src/ngtsc/perf/src/clock';
 
 @Component({
   selector: 'ngx-header',

@@ -45,9 +45,6 @@ import {
 import {UrlConfig} from './url-config';
 import {NbRoleProvider, NbSecurityModule} from '@nebular/security';
 import {of as observableOf} from 'rxjs';
-import {UserData} from './@core/data/users';
-import {UserService} from './@core/impl/users.service';
-import {FileListService} from './@core/impl/file.list.service';
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
   getRole() {

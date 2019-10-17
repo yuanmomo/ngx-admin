@@ -9,8 +9,6 @@ import {ProxyDownloadModule} from './proxy-download/proxy.download.module';
 import {ProfileModule} from './profile/profile.module';
 import {UserService} from '../@core/impl/users.service';
 import {FileListService} from '../@core/impl/file.list.service';
-import {NbRoleProvider} from '@nebular/security';
-import {NbSimpleRoleProvider} from '../app.module';
 import {UserData} from '../@core/data/users';
 import {FileListData} from '../@core/data/file.list';
 

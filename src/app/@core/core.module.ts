@@ -1,5 +1,4 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
-import {of as observableOf} from 'rxjs';
 
 import {throwIfAlreadyLoaded} from './module-import-guard';
 import {CommonModule} from '../common/common.module';
@@ -14,13 +13,11 @@ import {ImplModule} from './impl/impl.module';
 
 import {MockUserService} from './mock/mock-users.service';
 import {UserService} from './impl/users.service';
-import {UrlConfig} from '../url-config';
-import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {FileListService} from './impl/file.list.service';
 import {FileListData} from './data/file.list';
 import {MockFileService} from './mock/mock-file.service';
 
-const socialLinks = [
+// const socialLinks = [
   // {
   //   url: 'https://github.com/akveo/nebular',
   //   target: '_blank',
@@ -36,7 +33,7 @@ const socialLinks = [
   //   target: '_blank',
   //   icon: 'twitter',
   // },
-];
+// ];
 
 
 const DATA_SERVICES = [];

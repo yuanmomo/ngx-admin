@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NbLoginComponent, NbRegisterComponent} from '@nebular/auth';
+import {NbRegisterComponent} from '@nebular/auth';
 
 @Component({
   selector: 'ngx-register',

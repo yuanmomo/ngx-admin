@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component,  OnInit } from '@angular/core';
 import {environment} from '../../../../environments/environment';
-import {LocalDataSource, ViewCell} from 'ng2-smart-table';
+import {LocalDataSource } from 'ng2-smart-table';
 import {FileListData} from '../../../@core/data/file.list';
 import {ButtonViewComponent} from './button.view.component';
 import {UrlConfig} from '../../../url-config';
@@ -91,8 +91,8 @@ export class ListComponent implements OnInit {
     },
   };
 
-  private fileList: any;
-  private fileDownloadUrl: string;
+  fileList: any;
+  fileDownloadUrl: string;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component,  Input, OnInit } from '@angular/core';
 import {ViewCell} from 'ng2-smart-table';
 import {environment} from '../../../../environments/environment';
 import {LoadUtilService} from '../../../common/load.util';

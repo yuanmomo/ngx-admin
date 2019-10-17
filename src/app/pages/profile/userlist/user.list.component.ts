@@ -1,9 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {LocalDataSource} from 'ng2-smart-table';
 import {UrlConfig} from '../../../url-config';
 import {HttpUtilService} from '../../../common/http.util.service';
 import {ToastUtilService} from '../../../common/toast.util';
-import {UserService} from '../../../@core/impl/users.service';
 import {UserData} from '../../../@core/data/users';
 
 @Component({
@@ -71,7 +70,7 @@ export class UserListComponent implements OnInit {
     },
   };
 
-  private userList: any;
+  userList: any;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(

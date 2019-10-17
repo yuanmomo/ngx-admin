@@ -1,14 +1,9 @@
 import {of as observableOf, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import { UserData, UserDetail} from '../data/users';
-import {HttpUtilService} from '../../common/http.util.service';
-import {angularClassDecoratorKeys} from 'codelyzer/util/utils';
-import {UrlConfig} from '../../url-config';
 
 @Injectable()
 export class MockUserService extends UserData {
-
-  private time: Date = new Date;
 
   private userDetail = [{
     userName: 'Alan Thompson',
@@ -20,7 +15,7 @@ export class MockUserService extends UserData {
     isAdmin: '是',
   }];
 
-  constructor(private httpUtil: HttpUtilService,
+  constructor(
   ) {
     super();
   }

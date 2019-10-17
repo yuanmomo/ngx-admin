@@ -1,7 +1,6 @@
-import {finalize, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
 import {Router} from '@angular/router';
 
 @Injectable()
