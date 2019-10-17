@@ -1,0 +1,8 @@
+http://localhost {
+    tls  off
+    gzip
+    log /var/log/caddy/cloud_access.log
+	errors /var/log/caddy/cloud_error.log
+	root /front
+}
+

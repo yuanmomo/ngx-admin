@@ -9,5 +9,5 @@ export const environment = {
   sysName: 'MoMo-Cloud',
   version: '1.0.0',
   serverUrl: 'https://apitest.yuanmomo.net',
-  fileDownloadUrl: 'https://proxydtest.yuanmomo.net',
+  fileDownloadUrl: 'https://downloadtest.yuanmomo.net',
 };

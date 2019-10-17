@@ -1,8 +1,12 @@
 # compiled output
 /dist
-/release
 /tmp
 /out-tsc
+/logs
+/log
+/release
+/release-test
+/release-product
 
 # dependencies
 /node_modules
@@ -41,7 +45,3 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/logs
-/log
-/test
-/dist

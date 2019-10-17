@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:test": "ng build --output-path=release/ --configuration=test --aot",
-    "build:product": "ng build --output-path=release/ --configuration=production --aot",
+    "build": "ng build --output-path=release/",
+    "build:test": "ng build --output-path=release-test/ --configuration=test --prod",
+    "build:product": "ng build --output-path=release-product/ --configuration=production --prod",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
     "lint": "ng lint",

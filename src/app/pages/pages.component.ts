@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {MENU_ITEMS_ADMIN, MENU_ITEMS_USER} from './pages-menu';
 import {ToastUtilService} from '../common/toast.util';
+import {UserService} from '../@core/impl/users.service';
 import {UserData} from '../@core/data/users';
 
 @Component({

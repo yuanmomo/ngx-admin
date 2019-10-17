@@ -4,6 +4,7 @@ import {UrlConfig} from '../../../url-config';
 import {HttpUtilService} from '../../../common/http.util.service';
 import {ToastUtilService} from '../../../common/toast.util';
 import {UserService} from '../../../@core/impl/users.service';
+import {UserData} from '../../../@core/data/users';
 
 @Component({
   selector: 'ngx-user-list',
@@ -74,7 +75,7 @@ export class UserListComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(
-    private userService: UserService,
+    private userService: UserData,
     private httpUtil: HttpUtilService,
   ) {
   }

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../@core/impl/users.service';
-import {UserDetail} from '../../../@core/data/users';
+import {UserData, UserDetail} from '../../../@core/data/users';
 import {UrlConfig} from '../../../url-config';
 import {HttpUtilService} from '../../../common/http.util.service';
 import {ToastUtilService} from '../../../common/toast.util';
@@ -14,7 +13,7 @@ export class UserInfoComponent implements OnInit {
   public user = new UserDetail();
 
   constructor(
-    private userService: UserService,
+    private userService: UserData,
     private httpUtil: HttpUtilService,
   ) {
   }

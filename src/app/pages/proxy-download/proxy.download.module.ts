@@ -16,6 +16,8 @@ import { ListComponent} from './list/list.component';
 import {ProxyDownloadComponent} from './proxy.download.component';
 import {Ng2SmartTableModule} from 'ng2-smart-table';
 import {ButtonViewComponent} from './list/button.view.component';
+import {FileListData} from '../../@core/data/file.list';
+import {FileListService} from '../../@core/impl/file.list.service';
 
 @NgModule({
   imports: [
@@ -40,6 +42,10 @@ import {ButtonViewComponent} from './list/button.view.component';
     DownloadComponent,
     ListComponent,
     ButtonViewComponent,
+  ],
+  providers: [
+    // ...
+    {provide: FileListData, useClass: FileListService},
   ],
 })
 export class ProxyDownloadModule { }
